@@ -1,0 +1,43 @@
+STEPS TO SETUP THE MODULE:
+Connect the ADXL and the photon
+Setup the photon
+Flash the code
+Run the local server
+Open a web page to view the content
+
+CONNECT THE ADXL AND PHOTON
+Connection Table for ARQM Accelerometer module
+
+ADXL345 - Photon
+3V3 - 3V3
+GND - GND
+SDO - GND
+CS - 3V3
+SCL - D0
+SDA - D1
+
+SETUP THE PHOTON
+This setup is for a linux system. Your system must run npm and node.js. Use apt-get to install them. Use npm to install the particle cli (npm install -g particle-cli - https://docs.particle.io/guide/getting-started/connect/photon/). Update npm and node.js to the latest available versions to ensure proper working.
+
+Run ‘particle setup’ in a terminal and follow the resulting steps to set it up for the first time. This is the step where you provide the wifi credentials and name the photon. Be sure that you login to the email id you wish to use as the photon gets registered to that id.
+
+NOTE: You may need to use sudo for some of these commands.
+NOTE: Use login - shashikiran16.1996@gmail.com and password - 12345678
+
+FLASH THE CODE
+Once the photon is setup you need to flash in the code. There are local IDEs that can be used however the web IDE is sufficient (https://build.particle.io/build). The IDE is quite intuitive to use; just ensure that the code is verified and also that the LED on the photon blinks magenta when it is flashed.
+
+RUN THE LOCAL SERVER
+In order to access the data over a local wireless network a node.js server must run. Steps to run the server are detailed here: https://github.com/rickkas7/localserver. Now run the following command:
+npm install particle-api-js yargs node-persist (These are dependencies that the node.js program needs)
+
+Clone the git https://github.com/vslyo/arqm, this is where the files for running the localserver as well as 
+
+Now login to the particle account you choose to use using:
+node livearqm.js --login user@host.com password (This must be the same account that the particle photon is registered)
+
+And  then run the server using:
+node livearqm.js
+
+OPEN WEB PAGE TO VIEW CONTENT
+Once the node.js script is run it returns an IP address. Any device on the local network can use that IP address to view the data. Just enter the address in a browser and the data can be viewed streaming.
